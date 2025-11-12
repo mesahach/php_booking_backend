@@ -1,0 +1,80 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        # Disable Directory Browsing
+        Options -MultiViews -Indexes
+    </IfModule>
+    Options +FollowSymLinks
+
+    RewriteEngine On
+
+    # Set the base directory (adjust if API is not at web root)
+    RewriteBase /api/
+
+    # Redirect Trailing Slashes…
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.+)/$ $1 [R=301,L]
+
+    # Allow direct access to existing files and folders
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Route everything else to index.php
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+
+# Run Php without filename extension
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html
+
+# Return 404 if original request is .php
+# RewriteCond %{THE_REQUEST} "^[^ ]* .*?\.php[? ].*$"
+# RewriteRule .* - [L,R=404]
+
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+
+
+RewriteEngine On
+RewriteRule (^|/)Classes(/|$) - [F]
+
+RewriteEngine On
+RewriteRule (^|/)config(/|$) - [F]
+
+# Create a custom page for all 403 errors
+ErrorDocument 403 /misc/403.php
+
+ErrorDocument 404 /404.php
+<Files ~ "Class.php">
+Order Deny,Allow
+Deny from All
+</Files>
+
+<Files ~ "config.php">
+Order Deny,Allow
+Deny from All
+</Files>
+
+<Files .env>
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files .htaccess>
+    Order allow,deny
+    Deny from all
+</Files>
+
+# some servers needs this code
+# Header add Access-Control-Allow-Origin "*"
+# Header add Access-Control-Allow-Headers "origin, x-requested-with, content-type"
+# Header add Access-Control-Allow-Methods "PUT, GET, POST, DELETE, OPTIONS"

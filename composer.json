@@ -1,0 +1,41 @@
+{
+    "name": "meshachfriday/banking-api",
+    "description": "Banking REST API",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Meshach Friday",
+            "email": "fridaymeshach@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "MyApp\\": "Classes/"
+        }
+    },
+    "require": {
+        "php": "^8.2",
+        "firebase/php-jwt": "^6.11",
+        "vlucas/phpdotenv": "^5.5",
+        "guzzlehttp/guzzle": "^7.8",
+        "phpmailer/phpmailer": "^6.9",
+        "mervick/aes-everywhere": "^1.1",
+        "respect/validation": "^2.4",
+        "ph-7/php-http-response-header": "^1.0",
+        "ph-7/just-http-status-codes": "^1.1",
+        "ramsey/uuid": "^4.9",
+        "filp/whoops": "^2.18",
+        "gabordemooij/redbean": "^5.7",
+        "vectorface/googleauthenticator": "^3.4",
+        "google/auth": "^1.48",
+        "kreait/firebase-php": "^7.22",
+        "google/protobuf": "^4.32",
+        "grpc/grpc": "^1.74",
+        "google/cloud-firestore": "^1.54"
+    },
+    "config": {
+        "platform": {
+            "php": "8.2"
+        }
+    }
+}

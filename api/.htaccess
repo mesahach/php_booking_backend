@@ -1,0 +1,22 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule . index.php [L]
+
+
+RewriteEngine On
+RewriteRule (^|/)Classes(/|$) - [F]
+
+
+<Files Class.php>
+ Order allow,deny
+ Deny from all
+</Files>
+
+<Files inc.php>
+ Order allow,deny
+ Deny from all
+</Files>
+
+SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
