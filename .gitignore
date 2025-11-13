@@ -5,6 +5,8 @@ vendor
 composer.lock
 
 .idea
+.zip
+test.php
 
 # Mac OS log files
 .DS_Store

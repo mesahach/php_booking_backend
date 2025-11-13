@@ -179,7 +179,7 @@ abstract class FunctionsController
                 'code' => StatusCode::UNAUTHORIZED,
                 'message' => 'Invalid token signature or format.',
             ];
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             // General failure
             return [
                 'status' => false,

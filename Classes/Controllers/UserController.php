@@ -511,7 +511,7 @@ Your Email {$user_data->getEmail()} has been verified.
 
     public function logout()
     {
-        $decoded = $this->jwtTokenData(UserAction::LOGOUT->value);
+        $decoded = $this->jwtTokenData("user_" . UserAction::LOGIN->value);//(UserAction::LOGOUT->value);
 
         if (is_array($decoded)) {
             if (isset($decoded['status']) && $decoded['status'] === false) {
