@@ -26,7 +26,6 @@ class UserModel
             ->setEmailAuth(0)
             ->setStatus("Active")
             ->setPhone($data['phone'])
-            ->setPasswordText($data['password'])
             ->hashPassword($data['password'])
             ->setCreatedAt(date(self::DATE_TIME_FORMAT))
             ->setUpdatedAt(date(self::DATE_TIME_FORMAT));
