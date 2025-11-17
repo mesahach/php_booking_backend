@@ -130,7 +130,6 @@ class UserModel
         try {
             $user = new UserModelEntity();
             $user->setUserUuid($id);
-            $user->setPasswordText($data['password']);
             $user->setPassword($data['password']);
             $user->setUpdatedAt(date(self::DATE_TIME_FORMAT));
             if (UserDal::updatePassword($id, $user)) {
@@ -164,7 +163,6 @@ class UserModel
         try {
             $user = new UserModelEntity();
             $user->setUserUuid($uid);
-            $user->setPasswordText($password);
             $user->hashPassword($password);
             $user->setUpdatedAt(date(self::DATE_TIME_FORMAT));
             $userDal = UserDal::changePassword($user);
