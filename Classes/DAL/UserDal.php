@@ -31,7 +31,6 @@ final class UserDal extends SimpleModel
         $user->address = $data->getAddress();
         $user->country = $data->getCountry();
         $user->status = $data->getStatus();
-        $user->password_text = $data->getPasswordText();
         $user->created_at = $data->getCreatedAt();
         $user->updated_at = $data->getUpdatedAt();
         try {
@@ -183,7 +182,6 @@ final class UserDal extends SimpleModel
         try {
             $user = R::findOne(self::TABLE_NAME, 'user_uuid = :user_uuid', ['user_uuid' => $userUuid]);
             $user->password = $data->getPassword();
-            $user->password_text = $data->getPasswordText();
             $user->updated_at = $data->getUpdatedAt();
             $id = R::store($user);
             R::close();
