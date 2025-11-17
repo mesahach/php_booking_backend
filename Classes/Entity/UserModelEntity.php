@@ -15,8 +15,7 @@ class UserModelEntity extends SimpleModel
     private ?string $phone = null;
     private ?string $email = null;
     private ?string $image = null;
-    private ?string $password = null;
-    private ?string $password_text = null;
+    private ?string $password = null
     private ?string $resident_country = null;
     private ?int $emailAuth = null;
     private ?string $resident_state = null;
@@ -113,17 +112,6 @@ class UserModelEntity extends SimpleModel
     {
         $this->password = $password;
         return $this;
-    }
-
-    public function setPasswordText(string $password): self
-    {
-        $this->password_text = $password;
-        return $this;
-    }
-
-    public function getPasswordText(): ?string
-    {
-        return $this->password_text;
     }
 
     public function setResidentCountry(string $country): self
